@@ -45,6 +45,17 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
     public int getItemCount() {
         return tweets.size();
     }
+
+    //Clear all elements of recycler view
+    public void clear(){
+        tweets.clear();
+        notifyDataSetChanged();
+    }
+    //Add a list of items
+    public void addAll(List<Tweet> tweetList){
+        tweets.addAll(tweetList);
+        notifyDataSetChanged();
+    }
     //Define viewholder
     public class ViewHolder extends RecyclerView.ViewHolder{
         ImageView ivProfileImage;
