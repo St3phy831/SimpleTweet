@@ -7,7 +7,10 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.codepath.apps.restclienttemplate.models.Tweet;
 import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler;
@@ -69,6 +72,24 @@ public class TimelineActivity extends AppCompatActivity {
         //Add scrollListener to Recycler View
         rvTweets.addOnScrollListener(scrollListener);
         populateHomeTimeline();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        //Inflate the menu; this adds items to the action bar if it is present
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId() == R.id.compose){
+            //Compose item has been selected
+            Toast.makeText(this, "Compse!", Toast.LENGTH_SHORT).show();
+            //Navigate to compose activity
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void loadMoreData() {
